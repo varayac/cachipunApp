@@ -1,4 +1,6 @@
-// OBTENER
+// OBTENER DIV DONDE SE MOSTRARA EL RESULTADO
+let divResult = document.getElementById("result");
+
 let ingresaJugada;
 let cantidadJugadas = parseInt(prompt("Cuantas rondas desea jugar"));
 // let seleccionUsuario = parseInt(prompt("ingrese su opcion"));
@@ -29,6 +31,7 @@ function play(jugadaUsuario) {
       playpc = "tijeras";
       break;
   }
+  // imp(jugadaUsuario, playpc, resultado);
   console.log(
     "usuario : " +
       jugadaUsuario +
@@ -37,6 +40,18 @@ function play(jugadaUsuario) {
       " Resultado: " +
       reglasJugadas(jugadaUsuario, playpc)
   );
+
+  let pJugador = document.createElement("p");
+  let pPc = document.createElement("p");
+  let pResultado = document.createElement("p");
+  let resultado = reglasJugadas(jugadaUsuario, playpc);
+
+  pJugador.innerHTML = `<p>El Jugador eligio ${jugadaUsuario}</p>`;
+  pPc.innerHTML = `<p>El PC eligio ${playpc}</p>`;
+  pResultado.innerHTML = `<p>El Resultado es ${resultado}</p>`;
+  divResult.append(pJugador);
+  divResult.append(pPc);
+  divResult.append(pResultado);
 }
 
 function reglasJugadas(parametroJugadaUsuario, parametroJugadaPC) {
